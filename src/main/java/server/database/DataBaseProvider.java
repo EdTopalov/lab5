@@ -34,6 +34,11 @@ public class DataBaseProvider {
         return id;
     }
 
+    public int updateVehicle(Vehicle model, int id) {
+        //берет элемент из dataBase с номером id и подставляет значения из model
+        return id;
+    }
+
     public boolean removeVehicleFromDataBase(int id) {
         Set<Vehicle> copy = new TreeSet<>(dataBase);
         for (Vehicle model : copy) {
