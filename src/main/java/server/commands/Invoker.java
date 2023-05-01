@@ -3,6 +3,8 @@ package server.commands;
 import server.commands.list.*;
 import server.controller.VehicleController;
 import server.controller.VehicleControllerImpl;
+import server.exceptions.ArgumentException;
+import server.exceptions.ValidationException;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -30,6 +32,7 @@ public class Invoker {
         addCommandToMap("info", new InfoCommand(controller));
         addCommandToMap("clear", new ClearCommand(controller));
         addCommandToMap("show", new ShowCommand(controller));
+        addCommandToMap("add", new AddCommand(controller));
     }
 
     public void execute(String input) {
@@ -44,6 +47,8 @@ public class Invoker {
             if (!Invoker.getCommandMap().containsKey(command)) {
                 System.out.println("Command not found.");
             }
+        } catch (ArgumentException | ValidationException e) {
+            System.out.println(e.getMessage());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

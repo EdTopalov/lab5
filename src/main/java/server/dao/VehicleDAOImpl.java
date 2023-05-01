@@ -35,7 +35,7 @@ public class VehicleDAOImpl implements VehicleDAO {
 
     @Override
     public Integer addVehicle(Vehicle vehicle) {
-        return null;
+        return source.addVehicleToDatabase(vehicle);
     }
 
     @Override

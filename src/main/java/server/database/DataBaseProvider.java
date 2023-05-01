@@ -1,6 +1,7 @@
 package server.database;
 
 import server.model.Vehicle;
+import server.model.VehicleComparatorForTreeSet;
 
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -16,7 +17,7 @@ public class DataBaseProvider {
     }
 
     private static Set<Vehicle> loadDataBase(String fileName) {
-        Set<Vehicle> resultSet = new TreeSet<>();
+        Set<Vehicle> resultSet = new TreeSet<>(new VehicleComparatorForTreeSet());
         return resultSet;
     }
 

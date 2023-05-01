@@ -23,10 +23,10 @@ public class Vehicle {
         this.fuelType = fuelType;
     }
 
-    public Vehicle(String name, Coordinates coordinates, LocalDate creationDate, int enginePower, Float capacity, Float fuelConsumption, FuelType fuelType) {
+    public Vehicle(String name, Coordinates coordinates, int enginePower, Float capacity, Float fuelConsumption, FuelType fuelType) {
         this.name = name;
         this.coordinates = coordinates;
-        this.creationDate = creationDate;
+        this.creationDate = LocalDate.now();
         this.enginePower = enginePower;
         this.capacity = capacity;
         this.fuelConsumption = fuelConsumption;
@@ -34,6 +34,7 @@ public class Vehicle {
     }
 
     public Vehicle() {
+        creationDate = LocalDate.now();
     }
 
     public Integer getId() {

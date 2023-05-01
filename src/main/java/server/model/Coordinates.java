@@ -2,14 +2,14 @@ package server.model;
 
 public class Coordinates {
     private int x;
-    private Integer y; //Значение поля должно быть больше -775, Поле не может быть null
+    private int y; //Значение поля должно быть больше -775, Поле не может быть null
 
     public Coordinates(int x, Integer y) {
         this.x = x;
         this.y = y;
     }
 
-    public int getX() {
+    public Integer getX() {
         return x;
     }
 
