@@ -2,6 +2,9 @@ package server.commands;
 
 import server.commands.list.ExitCommand;
 import server.commands.list.HelpCommand;
+import server.commands.list.InfoCommand;
+import server.controller.VehicleController;
+import server.controller.VehicleControllerImpl;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -9,11 +12,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Invoker {
-    private BufferedReader reader;
     private static Map<String, Command> commandMap = new HashMap<>();
+    private final VehicleController controller;
+    private BufferedReader reader;
 
-    public Invoker() {
+    public Invoker(String filename) {
         this.reader = reader == null ? new BufferedReader(new InputStreamReader(System.in)) : reader;
+        controller = new VehicleControllerImpl(filename);
         init();
     }
 
@@ -24,6 +29,7 @@ public class Invoker {
     public void init() {
         addCommandToMap("help", new HelpCommand());
         addCommandToMap("exit", new ExitCommand());
+        addCommandToMap("info", new InfoCommand(controller));
     }
 
     public void execute(String input) {

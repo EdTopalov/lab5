@@ -10,8 +10,8 @@ import java.util.List;
 public class VehicleControllerImpl implements VehicleController {
     private VehicleDAO vehicleDAO;
 
-    public VehicleControllerImpl() {
-        this.vehicleDAO = new VehicleDAOImpl();
+    public VehicleControllerImpl(String fileName) {
+        this.vehicleDAO = new VehicleDAOImpl(fileName);
     }
 
     @Override
@@ -31,57 +31,57 @@ public class VehicleControllerImpl implements VehicleController {
 
     @Override
     public Integer addVehicle(Vehicle vehicle) {
-        return null;
+        return vehicleDAO.addVehicle(vehicle);
     }
 
     @Override
     public Vehicle updateVehicle(Vehicle vehicle, int id) {
-        return null;
+        return vehicleDAO.updateVehicle(vehicle, id);
     }
 
     @Override
     public void removeVehicleById(int id) {
-
+        vehicleDAO.removeVehicleById(id);
     }
 
     @Override
     public void clear() {
-
+        vehicleDAO.clear();
     }
 
     @Override
     public void save(String filename) {
-
+        vehicleDAO.save(filename);
     }
 
     @Override
     public Integer addVehicleIfMax(Vehicle vehicle) {
-        return null;
+        return vehicleDAO.addVehicleIfMax(vehicle);
     }
 
     @Override
     public Integer addVehicleIfMin(Vehicle vehicle) {
-        return null;
+        return vehicleDAO.addVehicleIfMin(vehicle);
     }
 
     @Override
     public void removeGreater(int enginePower) {
-
+        vehicleDAO.removeGreater(enginePower);
     }
 
     @Override
     public void removeAllByEnginePower(int enginePower) {
-
+        vehicleDAO.removeAllByEnginePower(enginePower);
     }
 
     @Override
     public List<Vehicle> filterByFuelType(FuelType fuelType) {
-        return null;
+        return vehicleDAO.filterByFuelType(fuelType);
     }
 
     @Override
     public List<Vehicle> filterStartsWithName(String name) {
-        return null;
+        return vehicleDAO.filterStartsWithName(name);
     }
 
     public VehicleDAO getVehicleDAO() {

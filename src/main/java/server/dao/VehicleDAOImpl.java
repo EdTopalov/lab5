@@ -1,14 +1,25 @@
 package server.dao;
 
+import server.database.DataBaseProvider;
 import server.model.FuelType;
 import server.model.Vehicle;
 
 import java.util.List;
 
 public class VehicleDAOImpl implements VehicleDAO {
+    private final DataBaseProvider source;
+
+    public VehicleDAOImpl(String fileName) {
+        this.source = new DataBaseProvider(fileName);
+    }
+
     @Override
     public String info() {
-        return null;
+        String answer = ("Данные о базе данных: \n");
+        answer += "Тип: " + source.getDataBase().getClass().getTypeName().split("\\.")[2] + "\n";
+        answer += "Время создания: " + source.getDateTime().toString() + "\n";
+        answer += "Элементов внутри: " + (source.getDataBase().size()) + "\n";
+        return answer;
     }
 
     @Override
