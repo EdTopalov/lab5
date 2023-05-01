@@ -11,10 +11,10 @@ import static client.ConsoleColors.*;
 public class HelpCommand implements Command {
     @Override
     public void execute(String[] args) {
-        if (args.length != 1){
+        if (args.length != 1) {
             throw new ArgumentException("Команда не должна содержать аргументов.");
         }
-        for (Map.Entry<String, Command> pair : Invoker.getCommandMap().entrySet()){
+        for (Map.Entry<String, Command> pair : Invoker.getCommandMap().entrySet()) {
             System.out.println(CYAN + pair.getKey() + RESET + WHITE + " : " + pair.getValue().description() + RESET);
         }
     }

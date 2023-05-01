@@ -12,13 +12,14 @@ public class ConsoleUI {
     public ConsoleUI(Invoker invoker) {
         this.invoker = invoker;
     }
-    public void start(){
+
+    public void start() {
         String command;
         BufferedReader reader = invoker.getReader();
 
-        try (reader){
+        try (reader) {
             System.out.println("Напишите help чтобы увидеть все команды.");
-            while (!Objects.equals(command = reader.readLine(), "exit") && !Objects.equals(command, null)){
+            while (!Objects.equals(command = reader.readLine(), "exit") && !Objects.equals(command, null)) {
                 invoker.execute(command);
             }
         } catch (IOException e) {

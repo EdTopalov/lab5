@@ -10,29 +10,32 @@ import java.util.Map;
 
 public class Invoker {
     private BufferedReader reader;
-    private static Map<String, Command> commandMap =  new HashMap<>();
+    private static Map<String, Command> commandMap = new HashMap<>();
 
     public Invoker() {
         this.reader = reader == null ? new BufferedReader(new InputStreamReader(System.in)) : reader;
         init();
     }
-    public void addCommandToMap(String commandName, Command command){
+
+    public void addCommandToMap(String commandName, Command command) {
         commandMap.put(commandName, command);
     }
-    public void init(){
+
+    public void init() {
         addCommandToMap("help", new HelpCommand());
         addCommandToMap("exit", new ExitCommand());
     }
-    public void execute(String input){
+
+    public void execute(String input) {
         try {
             String[] commandArray = input.split(" ");
             String command = commandArray[0];
-            for (Map.Entry<String, Command> pair : Invoker.getCommandMap().entrySet()){
-                if (pair.getKey().equals(command)){
+            for (Map.Entry<String, Command> pair : Invoker.getCommandMap().entrySet()) {
+                if (pair.getKey().equals(command)) {
                     pair.getValue().execute(commandArray);
                 }
             }
-            if (!Invoker.getCommandMap().containsKey(command)){
+            if (!Invoker.getCommandMap().containsKey(command)) {
                 System.out.println("Command not found.");
             }
         } catch (Exception e) {
