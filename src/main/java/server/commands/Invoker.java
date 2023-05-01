@@ -1,8 +1,6 @@
 package server.commands;
 
-import server.commands.list.ExitCommand;
-import server.commands.list.HelpCommand;
-import server.commands.list.InfoCommand;
+import server.commands.list.*;
 import server.controller.VehicleController;
 import server.controller.VehicleControllerImpl;
 
@@ -30,6 +28,8 @@ public class Invoker {
         addCommandToMap("help", new HelpCommand());
         addCommandToMap("exit", new ExitCommand());
         addCommandToMap("info", new InfoCommand(controller));
+        addCommandToMap("clear", new ClearCommand(controller));
+        addCommandToMap("show", new ShowCommand(controller));
     }
 
     public void execute(String input) {

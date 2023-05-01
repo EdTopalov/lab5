@@ -4,6 +4,7 @@ import server.database.DataBaseProvider;
 import server.model.FuelType;
 import server.model.Vehicle;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class VehicleDAOImpl implements VehicleDAO {
@@ -29,7 +30,7 @@ public class VehicleDAOImpl implements VehicleDAO {
 
     @Override
     public List<Vehicle> getAllVehicle() {
-        return null;
+        return new ArrayList<Vehicle>(source.getDataBase());
     }
 
     @Override
@@ -49,7 +50,7 @@ public class VehicleDAOImpl implements VehicleDAO {
 
     @Override
     public void clear() {
-
+        source.getDataBase().clear();
     }
 
     @Override

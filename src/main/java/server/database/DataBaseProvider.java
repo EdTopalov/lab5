@@ -33,7 +33,7 @@ public class DataBaseProvider {
         return id;
     }
 
-    public boolean removeHumanFromDataBase(int id) {
+    public boolean removeVehicleFromDataBase(int id) {
         Set<Vehicle> copy = new TreeSet<>(dataBase);
         for (Vehicle model : copy) {
             if (model.getId().equals(id)) {
