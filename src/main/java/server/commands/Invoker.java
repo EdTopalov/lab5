@@ -1,5 +1,6 @@
 package server.commands;
 
+import server.commands.list.ExitCommand;
 import server.commands.list.HelpCommand;
 
 import java.io.BufferedReader;
@@ -20,6 +21,7 @@ public class Invoker {
     }
     public void init(){
         addCommandToMap("help", new HelpCommand());
+        addCommandToMap("exit", new ExitCommand());
     }
     public void execute(String input){
         try {
