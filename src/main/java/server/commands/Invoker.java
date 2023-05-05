@@ -33,6 +33,8 @@ public class Invoker {
         addCommandToMap("clear", new ClearCommand(controller));
         addCommandToMap("show", new ShowCommand(controller));
         addCommandToMap("add", new AddCommand(controller));
+        addCommandToMap("update", new UpdateCommand(controller));
+        addCommandToMap("remove", new RemoveCommand(controller));
     }
 
     public void execute(String input) {

@@ -41,13 +41,12 @@ public class VehicleDAOImpl implements VehicleDAO {
 
     @Override
     public Vehicle updateVehicle(Vehicle vehicle, int id) {
-        //попробовать
-        return null;
+        return source.getDataBase().stream().filter(v -> v.getId().equals(id)).findFirst().get().update(vehicle);
     }
 
     @Override
     public void removeVehicleById(int id) {
-        //вызвать метод соурса
+        source.removeVehicleFromDataBase(id);
     }
 
     @Override

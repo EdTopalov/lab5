@@ -114,4 +114,14 @@ public class Vehicle {
                 ", fuelType=" + fuelType +
                 '}';
     }
+
+    public Vehicle update(Vehicle vehicle) {
+        name = vehicle.getName();
+        coordinates = vehicle.getCoordinates();
+        enginePower = vehicle.getEnginePower();
+        fuelConsumption = vehicle.getFuelConsumption();
+        capacity = vehicle.getCapacity();
+        fuelType = vehicle.getFuelType();
+        return this;
+    }
 }

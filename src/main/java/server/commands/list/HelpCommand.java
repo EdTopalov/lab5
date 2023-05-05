@@ -21,6 +21,6 @@ public class HelpCommand implements Command {
 
     @Override
     public String description() {
-        return "вывести все команды.";
+        return "выводит все команды.";
     }
 }
