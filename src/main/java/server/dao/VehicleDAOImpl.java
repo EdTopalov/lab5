@@ -5,6 +5,7 @@ import server.model.FuelType;
 import server.model.Vehicle;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class VehicleDAOImpl implements VehicleDAO {
@@ -61,16 +62,27 @@ public class VehicleDAOImpl implements VehicleDAO {
 
     @Override
     public Integer addVehicleIfMax(Vehicle vehicle) {
-        //взять все Vehicle, взять их Int значения(по полю enginePower) и сравнить максильное из их с vehicle.getEnginePower()
-        return null;
+        int id = 0;
+        int maxPower = source.getDataBase().stream().map(Vehicle::getEnginePower).max(Comparator.naturalOrder()).orElse(0);
+        if (maxPower < vehicle.getEnginePower()) {
+            id = source.addVehicleToDatabase(vehicle);
+            System.out.println("Успешно");
+        } else {
+            System.out.println("Не добавлен так как ePower не максимальный");
+        }
+        return id;
+
     }
 
     @Override
     public Integer addVehicleIfMin(Vehicle vehicle) {
-        //анал. см выше
+        int id = 0;
+        int minPower = source.getDataBase().stream().map(Vehicle::getEnginePower).min(Comparator.naturalOrder()).orElse(0);
+        if (minPower > vehicle.getEnginePower()) {
+            return null;
+        }
         return null;
     }
-
     @Override
     public void removeGreater(int enginePower) {
         //getAllVehicle, if (enginePower < vehicle.getEnginePower) { source.remove(vehicle.getId) }

@@ -35,6 +35,7 @@ public class Invoker {
         addCommandToMap("add", new AddCommand(controller));
         addCommandToMap("update", new UpdateCommand(controller));
         addCommandToMap("remove", new RemoveCommand(controller));
+        addCommandToMap("add_if_max", new AddIfMaxCommand(controller));
     }
 
     public void execute(String input) {
