@@ -5,9 +5,17 @@ import server.commands.Command;
 import server.controller.VehicleController;
 import server.exceptions.ArgumentException;
 
+/**
+ * The type Add if max command.
+ */
 public class AddIfMaxCommand implements Command {
     private final VehicleController controller;
 
+    /**
+     * Instantiates a new Add if max command.
+     *
+     * @param controller the controller
+     */
     public AddIfMaxCommand(VehicleController controller) {
         this.controller = controller;
     }

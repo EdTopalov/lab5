@@ -2,7 +2,16 @@ package server.utils;
 
 import server.model.FuelType;
 
+/**
+ * The type Parser.
+ */
 public class Parser {
+    /**
+     * Tilda resolver string.
+     *
+     * @param file the file
+     * @return the string
+     */
     public static String tildaResolver(String file) {
         if (file.startsWith("~")) {
             file = file.replaceFirst("^~", System.getProperty("user.home"));
@@ -10,6 +19,12 @@ public class Parser {
         return file;
     }
 
+    /**
+     * From string to fuel type fuel type.
+     *
+     * @param line the line
+     * @return the fuel type
+     */
     public static FuelType fromStringToFuelType(String line) {
         switch (line.toLowerCase()) {
             case "1", "gasoline" -> {

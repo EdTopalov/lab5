@@ -6,9 +6,17 @@ import server.exceptions.ArgumentException;
 import server.exceptions.ValidationException;
 import server.model.Vehicle;
 
+/**
+ * The type Remove command.
+ */
 public class RemoveCommand implements Command {
     private final VehicleController controller;
 
+    /**
+     * Instantiates a new Remove command.
+     *
+     * @param controller the controller
+     */
     public RemoveCommand(VehicleController controller) {
         this.controller = controller;
     }

@@ -8,6 +8,9 @@ import java.util.Map;
 
 import static client.ConsoleColors.*;
 
+/**
+ * The type Help command.
+ */
 public class HelpCommand implements Command {
     @Override
     public void execute(String[] args) {

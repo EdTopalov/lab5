@@ -5,16 +5,25 @@ import server.validation.Validation;
 
 import java.util.Scanner;
 
-import static server.validation.Validation.validate;
 
+/**
+ * The type Name builder.
+ */
 public class NameBuilder {
+    /**
+     * Build string.
+     *
+     * @return the string
+     */
     public static String build() {
         String name;
         try {
             Scanner sc = new Scanner(System.in);
             System.out.println("Введите название Vehicle: ");
             name = sc.nextLine();
-            validate(name, Validation::validateUserName, "Неверное имя. Оно не должно быть пустым.");
+            if (!Validation.validateUserName(name)) {
+                throw new ValidationException("Неверное имя. Оно не должно быть пустым.");
+            }
             return name;
         } catch (ValidationException e) {
             System.out.println(e.getMessage());

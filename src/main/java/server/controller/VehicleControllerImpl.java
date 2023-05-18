@@ -7,9 +7,20 @@ import server.model.Vehicle;
 
 import java.util.List;
 
+import static server.validation.Validation.validateFile;
+
+/**
+ * Класс для валидации данных, введенных пользовалем
+ *
+ */
 public class VehicleControllerImpl implements VehicleController {
     private VehicleDAO vehicleDAO;
 
+    /**
+     * Instantiates a new Vehicle controller.
+     *
+     * @param fileName the file name
+     */
     public VehicleControllerImpl(String fileName) {
         this.vehicleDAO = new VehicleDAOImpl(fileName);
     }
@@ -51,6 +62,7 @@ public class VehicleControllerImpl implements VehicleController {
 
     @Override
     public void save(String filename) {
+        validateFile(filename);
         vehicleDAO.save(filename);
     }
 
@@ -84,10 +96,20 @@ public class VehicleControllerImpl implements VehicleController {
         return vehicleDAO.filterStartsWithName(name);
     }
 
+    /**
+     * Gets vehicle dao.
+     *
+     * @return the vehicle dao
+     */
     public VehicleDAO getVehicleDAO() {
         return vehicleDAO;
     }
 
+    /**
+     * Sets vehicle dao.
+     *
+     * @param vehicleDAO the vehicle dao
+     */
     public void setVehicleDAO(VehicleDAO vehicleDAO) {
         this.vehicleDAO = vehicleDAO;
     }

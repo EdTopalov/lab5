@@ -8,9 +8,17 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * Класс для взаимодействия с базой данных.
+ */
 public class VehicleDAOImpl implements VehicleDAO {
     private final DataBaseProvider source;
 
+    /**
+     * Instantiates a new Vehicle dao.
+     *
+     * @param fileName the file name
+     */
     public VehicleDAOImpl(String fileName) {
         this.source = new DataBaseProvider(fileName);
     }
@@ -26,8 +34,7 @@ public class VehicleDAOImpl implements VehicleDAO {
 
     @Override
     public Vehicle getVehicleById(int id) {
-        //не трогать
-        return null;
+        return source.getDataBase().stream().filter(p -> p.getId().equals(id)).toList().get(0);
     }
 
     @Override
@@ -57,12 +64,12 @@ public class VehicleDAOImpl implements VehicleDAO {
 
     @Override
     public void save(String filename) {
-        //не трогать
+        source.save(filename);
     }
 
     @Override
     public Integer addVehicleIfMax(Vehicle vehicle) {
-        int id = 0;
+        int id = -1;
         int maxPower = source.getDataBase().stream().map(Vehicle::getEnginePower).max(Comparator.naturalOrder()).orElse(0);
         if (maxPower < vehicle.getEnginePower()) {
             id = source.addVehicleToDatabase(vehicle);
@@ -71,38 +78,36 @@ public class VehicleDAOImpl implements VehicleDAO {
             System.out.println("Не добавлен так как ePower не максимальный");
         }
         return id;
-
     }
 
     @Override
     public Integer addVehicleIfMin(Vehicle vehicle) {
-        int id = 0;
+        int id = -1;
         int minPower = source.getDataBase().stream().map(Vehicle::getEnginePower).min(Comparator.naturalOrder()).orElse(0);
         if (minPower > vehicle.getEnginePower()) {
-            return null;
+            id = source.addVehicleToDatabase(vehicle);
+            System.out.println("Успешно");
         }
-        return null;
+        return id;
     }
+
     @Override
     public void removeGreater(int enginePower) {
-        //getAllVehicle, if (enginePower < vehicle.getEnginePower) { source.remove(vehicle.getId) }
+        source.getDataBase().removeIf(p -> p.getEnginePower() < enginePower);
     }
 
     @Override
     public void removeAllByEnginePower(int enginePower) {
-        // анал. см. выше ( == )
+        source.getDataBase().removeIf(p -> p.getEnginePower() == enginePower);
     }
 
     @Override
     public List<Vehicle> filterByFuelType(FuelType fuelType) {
-        //1. создать список, getAllVEhicle if fuelType == vehicle.getFuelType list.add(vehicle)
-        //return list;
-        return null;
+        return source.getDataBase().stream().filter(p -> p.getFuelType().equals(fuelType)).toList();
     }
 
     @Override
     public List<Vehicle> filterStartsWithName(String name) {
-        // анал. см. выше + if (vehicle.getName().contains(name)) { list.add(vehicle)}
-        return null;
+        return source.getDataBase().stream().filter(p -> p.getName().contains(name)).toList();
     }
 }

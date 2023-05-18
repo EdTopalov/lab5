@@ -7,10 +7,18 @@ import server.exceptions.ArgumentException;
 import server.exceptions.ValidationException;
 import server.model.Vehicle;
 
+/**
+ * The type Update command.
+ */
 public class UpdateCommand implements Command {
 
     private final VehicleController controller;
 
+    /**
+     * Instantiates a new Update command.
+     *
+     * @param controller the controller
+     */
     public UpdateCommand(VehicleController controller) {
         this.controller = controller;
     }
@@ -25,9 +33,6 @@ public class UpdateCommand implements Command {
             if (id <= 0) {
                 throw new ValidationException("id больше нуля");
             }
-            /* if (controller.getVehicleById(id) == null) {
-                throw new ValidationException("Пользователь не найден " + id + " ");
-            }*/
             if (controller.getAllVehicle().stream().map(Vehicle::getId).toList().contains(id)) {
                 controller.updateVehicle(VehicleBuilder.build(), id);
                 System.out.println("Vehicle обновлен.");

@@ -3,6 +3,9 @@ package server.commands.list;
 import server.commands.Command;
 import server.exceptions.ArgumentException;
 
+/**
+ * The type Exit command.
+ */
 public class ExitCommand implements Command {
 
     @Override

@@ -4,9 +4,17 @@ import server.commands.Command;
 import server.controller.VehicleController;
 import server.exceptions.ArgumentException;
 
+/**
+ * The type Clear command.
+ */
 public class ClearCommand implements Command {
     private final VehicleController controller;
 
+    /**
+     * Instantiates a new Clear command.
+     *
+     * @param controller the controller
+     */
     public ClearCommand(VehicleController controller) {
         this.controller = controller;
     }

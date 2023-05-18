@@ -5,7 +5,15 @@ import server.model.Coordinates;
 
 import java.util.Scanner;
 
+/**
+ * The type Coordinates builder.
+ */
 public class CoordinatesBuilder {
+    /**
+     * Build coordinates.
+     *
+     * @return the coordinates
+     */
     public static Coordinates build() {
         int x;
         int y;

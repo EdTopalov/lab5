@@ -5,9 +5,17 @@ import server.commands.Command;
 import server.controller.VehicleController;
 import server.exceptions.ArgumentException;
 
+/**
+ * The type Add if min command.
+ */
 public class AddIfMinCommand implements Command {
     private final VehicleController controller;
 
+    /**
+     * Instantiates a new Add if min command.
+     *
+     * @param controller the controller
+     */
     public AddIfMinCommand(VehicleController controller) {
         this.controller = controller;
     }

@@ -2,7 +2,15 @@ package server.builders;
 
 import server.model.Vehicle;
 
+/**
+ * Класс строитель объекта класса Vehicle.
+ */
 public class VehicleBuilder {
+    /**
+     * Build vehicle.
+     *
+     * @return the vehicle
+     */
     public static Vehicle build() {
         Vehicle response = new Vehicle();
         response.setName(NameBuilder.build());
