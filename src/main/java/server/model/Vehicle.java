@@ -8,10 +8,11 @@ import java.time.LocalDateTime;
 /**
  * The type Vehicle.
  */
-public class Vehicle {
+public class Vehicle implements Comparable<Vehicle> {
     private Integer id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
+
     @JsonAdapter(GsonLocalDateTime.class)
     private java.time.LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
     private int enginePower; //Значение поля должно быть больше 0
@@ -241,5 +242,10 @@ public class Vehicle {
         capacity = vehicle.getCapacity();
         fuelType = vehicle.getFuelType();
         return this;
+    }
+
+    @Override
+    public int compareTo(Vehicle o) {
+        return enginePower - o.getEnginePower();
     }
 }

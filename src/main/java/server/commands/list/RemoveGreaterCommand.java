@@ -26,6 +26,7 @@ public class RemoveGreaterCommand implements Command {
         }
         try {
             controller.removeGreater(Integer.parseInt(args[1]));
+            System.out.println("Vehicle удалены.");
         } catch (NumberFormatException e) {
             System.out.println("Значение engine power -- числовое.");
         }

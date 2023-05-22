@@ -43,7 +43,7 @@ public interface VehicleController {
      * Update vehicle vehicle.
      *
      * @param vehicle the vehicle
-     * @param id      the id
+     * @param id      the idw
      * @return the vehicle
      */
     Vehicle updateVehicle(Vehicle vehicle, int id);

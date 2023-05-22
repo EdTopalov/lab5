@@ -26,6 +26,7 @@ public class RemoveAllByEnginePowerCommand implements Command {
         }
         try {
             controller.removeAllByEnginePower(Integer.parseInt(args[1]));
+            System.out.println("Vehicle удален.");
         } catch (NumberFormatException e) {
             System.out.println("Значение engine power -- числовое.");
         }
@@ -33,6 +34,6 @@ public class RemoveAllByEnginePowerCommand implements Command {
 
     @Override
     public String description() {
-        return null;
+        return "удаляет элементы с заданным engine power";
     }
 }

@@ -1,10 +1,14 @@
 package server.commands.list;
 
+import server.builders.VehicleBuilder;
 import server.commands.Command;
 import server.controller.VehicleController;
 import server.exceptions.ArgumentException;
 import server.exceptions.ValidationException;
 import server.model.Vehicle;
+import server.database.DataBaseProvider;
+import javax.lang.model.element.Element;
+import java.util.List;
 
 /**
  * The type Remove command.
@@ -42,6 +46,7 @@ public class RemoveCommand implements Command {
         }
 
     }
+
 
     @Override
     public String description() {

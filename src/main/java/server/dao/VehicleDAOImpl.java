@@ -93,12 +93,14 @@ public class VehicleDAOImpl implements VehicleDAO {
 
     @Override
     public void removeGreater(int enginePower) {
-        source.getDataBase().removeIf(p -> p.getEnginePower() < enginePower);
+        source.getDataBase().removeIf(p -> p.getEnginePower() > enginePower);
+        source.reorderId();
     }
 
     @Override
     public void removeAllByEnginePower(int enginePower) {
         source.getDataBase().removeIf(p -> p.getEnginePower() == enginePower);
+        source.reorderId();
     }
 
     @Override

@@ -81,6 +81,7 @@ public class Invoker {
         addCommandToMap("update", new UpdateCommand(controller));
         addCommandToMap("remove", new RemoveCommand(controller));
         addCommandToMap("add_if_max", new AddIfMaxCommand(controller));
+        addCommandToMap("add_if_min", new AddIfMinCommand(controller));
         addCommandToMap("save", new SaveCommand(controller, filename));
         addCommandToMap("remove_greater", new RemoveGreaterCommand(controller));
         addCommandToMap("filter_by_fuel_type", new FilterByFuelTypeCommand(controller));

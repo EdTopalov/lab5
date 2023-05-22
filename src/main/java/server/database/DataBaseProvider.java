@@ -66,7 +66,7 @@ public class DataBaseProvider {
     }
 
     /**
-     * Метод для валидации списка городов из json файла.
+     * Метод для валидации списка vehicle из json файла.
      *
      * @param data
      * @return
@@ -144,6 +144,7 @@ public class DataBaseProvider {
         for (Vehicle model : copy) {
             if (model.getId().equals(id)) {
                 dataBase.remove(model);
+                reorderId();
                 return true;
             }
         }
