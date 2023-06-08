@@ -13,6 +13,7 @@ public class ExitCommand implements Command {
         if (args.length != 1) {
             throw new ArgumentException("Команда не должна содержать аргументов.");
         }
+        System.exit(0);
     }
 
     @Override

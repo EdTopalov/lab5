@@ -9,6 +9,6 @@ public class VehicleComparatorForTreeSet implements Comparator<Vehicle> {
 
     @Override
     public int compare(Vehicle o1, Vehicle o2) {
-        return o1.getEnginePower() - o2.getEnginePower();
+        return o1.hashCode() - o2.hashCode();
     }
 }

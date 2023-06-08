@@ -36,8 +36,11 @@ public class RemoveCommand implements Command {
                 throw new ValidationException("id больше нуля");
             }
             if (controller.getAllVehicle().stream().map(Vehicle::getId).toList().contains(id)) {
-                controller.removeVehicleById(id);
-                System.out.println("Vehicle удален.");
+                if (controller.removeVehicleById(id)){
+                    System.out.println("Vehicle удален.");
+                } else {
+                    System.out.println("Vehicle не был удален.");
+                }
             } else {
                 System.out.println("Vehicle с таким id не найден.");
             }
